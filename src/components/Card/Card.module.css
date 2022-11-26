@@ -1,0 +1,37 @@
+.container{
+    border: 1px solid rgb(112,112, 112);
+    background-color: rgb(184, 184, 184);
+    border-radius: 10px;
+    width: 180px;
+    padding: 10px;
+    box-shadow: 0 0 10px black;
+}
+.paddingCard{
+    padding: 0.5%;
+    justify-content: space-between;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.image{
+    width: 95%;
+    border: 1px solid rgb(112,112, 112);
+    border-radius: 10px;
+}
+
+.buttonContainer{
+    
+    display: flex;
+    justify-content: flex-end;
+}
+.buttonContainer button{
+    margin: 3px 3px 0 0;
+    background-color: rgb(192, 41, 41);
+    color: whitesmoke;
+    border:none;
+    border-radius: 3px;
+}
+.data{
+    display: flex;
+    justify-content: space-around;
+    
+}
