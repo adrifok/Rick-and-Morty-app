@@ -14,19 +14,20 @@ export default function Detail(props){
             .then((char) => {
             if (char.name) {
                 setCharacter(char);
-            } else {
+            } else  {
                 window.alert('invalid character ID');
             }
         })
         .catch((err) => {
-        window.alert('No hay personajes con ese ID');
+        window.alert('invalid character ID');
         });
         return setCharacter({});
      }, [detailId]);
      
+     console.log(character)
     return(
         <div className={styles.container} >
-            <Link to='/'>
+            <Link to='/home'>
             <button>Go Back!</button>
             </Link>
             <h2>{character.name}</h2>

@@ -1,11 +1,11 @@
-import Card from './Cards'
 import React from 'react';
+import Card from '../Card/Card';
 
 export default function Cards(props) {
    const { characters } = props;
    return (
    <div  style= {{
-      display: 'flex', justifyContent: 'space-evenly'
+      display: 'flex', justifyContent: 'center'
    }}>
       {characters.map(character => (
       <Card 
@@ -15,13 +15,14 @@ export default function Cards(props) {
       gender={character.gender}
       species={character.species}
       image={character.image}
-      onClose={character.onClose}
+      onClose={() => props.onClose(character.id)} />
+      //onClose={character.onClose}
    
-     // {...character}  //en lugar del codigo anterior hago destructuring 
+      //{...character}  //en lugar del codigo anterior hago destructuring 
       //para resumir, desgloso el objeto
 
-       //onClose ={() => window.alert('Emulamos que se cierra la card')}
-      />
+      //onClose ={() => window.alert('Emulamos que se cierra la card')}
+      
       ))}
    </div>
    );
