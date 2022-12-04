@@ -4,10 +4,11 @@ import { useState } from 'react';
 import './App.css'
 import Cards from './components/Cards/Cards.jsx';
 import NavBar from './components/Nav/NavBar';
-import { Routes, Route, useLocation} from 'react-router-dom';
+import { Routes, Route, useLocation , useNavigate} from 'react-router-dom';
 import About from './components/About/About'
 import Detail from './components/Detail/Detail';
 import Form from './components/Form/Form';
+import { useEffect } from 'react';
 
 
 function App () {
@@ -20,7 +21,7 @@ const [characters, setCharacters] = useState([]);
           if (data.name) {
               setCharacters((oldChars) => [...oldChars, data]);
           } else {
-              window.alert('invalid input Id');
+              window.alert('Invalid Input ID');
           }
       });
 };
@@ -28,24 +29,41 @@ const onClose = (id) =>{
   setCharacters(characters.filter((char) => char.id !== id));
 };
 
-const location = useLocation();  //location es un objeto que contiene la locacion y el pathname
-//console.log(location);
+const location = useLocation();  //location es un objeto que contiene el pathname (la url donde estoy parado)
+console.log(location);
+
+const navigate = useNavigate();
+const [access, setAccess] = useState(false);
+const username = 'ejemplo@gmail.com';
+const password = '1password';
+
+function login(userData) {
+    if (userData.password === password && userData.username === username) {
+      setAccess(true);
+      navigate('/home');
+    }
+}
+
+useEffect (() => {
+  !access && navigate('/');
+}, [access]);
+
+
   return (
 
     <div className='App' style={{ padding: '25px' }}> 
     {location.pathname !== "/" && <NavBar onSearch ={onSearch}/>}
-     
-      <NavBar onSearch={onSearch} />
       <Routes >
-    <Route path="/" element ={<Form/>}> </Route>
-      <Route path='/home' element = {<Cards characters={characters} onClose= {onClose}/>}/>
-      <Route path='/about' element={<About/>} />
-      <Route path='/detail/:detailId' element={<Detail/>}/>
+      <Route path="/" element ={<Form login = {login}/>}/> 
+      <Route 
+              path='/home' 
+              element = {<Cards characters={characters} onClose= {onClose}/>}/>
+      <Route path='/about' element={<About />} />
+      <Route path='/detail/:detailId' element={<Detail />}/>
       </Routes>
       
       </div>
   );
 }
-
 
 export default App;

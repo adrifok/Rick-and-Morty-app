@@ -5,7 +5,7 @@ import { useParams} from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 export default function Detail(props){
-    const {detailId} = useParams()
+    const {detailId} = useParams();
     const [character, setCharacter] = useState({});
 
     useEffect(() => {

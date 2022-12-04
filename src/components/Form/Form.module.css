@@ -14,3 +14,6 @@
     border-radius: 5px;
     color: rgb(29, 26, 26);
 }
+.error{
+    color: red;
+}
