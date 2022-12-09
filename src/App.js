@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 import './App.css'
 import Cards from './components/Cards/Cards.jsx';
 import NavBar from './components/Nav/NavBar';
@@ -8,8 +8,7 @@ import { Routes, Route, useLocation , useNavigate} from 'react-router-dom';
 import About from './components/About/About'
 import Detail from './components/Detail/Detail';
 import Form from './components/Form/Form';
-import { useEffect } from 'react';
-
+import Favorites from './components/Favorites/Favorites';
 
 function App () {
 const [characters, setCharacters] = useState([]);
@@ -34,8 +33,8 @@ console.log(location);
 
 const navigate = useNavigate();
 const [access, setAccess] = useState(false);
-const username = 'ejemplo@gmail.com';
-const password = '1password';
+const username = 'yo@gmail.com';
+const password = '123456';
 
 function login(userData) {
     if (userData.password === password && userData.username === username) {
@@ -59,6 +58,7 @@ useEffect (() => {
               path='/home' 
               element = {<Cards characters={characters} onClose= {onClose}/>}/>
       <Route path='/about' element={<About />} />
+      <Route path='/Favorites' element={<Favorites />} />
       <Route path='/detail/:detailId' element={<Detail />}/>
       </Routes>
       

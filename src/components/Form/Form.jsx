@@ -9,8 +9,8 @@ export default function Form (props){
     const [userData, setUserData] = useState({ username: "", password: ""});
 
     const [errors, setErrors] = useState ({
-        username :'',
-        password: ''
+        username :"",
+        password: "",
 })
 
     const handleInputChange =(e)=>{
@@ -27,7 +27,7 @@ export default function Form (props){
                 [name] : value
             }))
          )
-         console.log(errors);
+         //console.log(errors);
     }
 
         const handleSubmit = () =>{

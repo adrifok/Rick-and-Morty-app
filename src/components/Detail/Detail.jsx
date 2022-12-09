@@ -1,11 +1,12 @@
 import React from 'react';
-import styles from './Detail.module.css';
 import {useState, useEffect} from 'react';
-import { useParams} from 'react-router-dom';
+import { useParams,useNavigate} from 'react-router-dom';
 import { Link } from 'react-router-dom';
+
 
 export default function Detail(props){
     const {detailId} = useParams();
+    const navigate= useNavigate();
     const [character, setCharacter] = useState({});
 
     useEffect(() => {
@@ -26,15 +27,17 @@ export default function Detail(props){
      
      console.log(character)
     return(
-        <div className={styles.container} >
+        <div className='sobreMi' >
             <Link to='/home'>
-            <button>Go Back!</button>
             </Link>
-            <h2>{character.name}</h2>
+            <h1>Name{character.name}</h1>
             <img scr= {character.image} alt ={character.name}/>
-            <h3>Origin:{character.origin.name}</h3>
-            <h3>Species:{character.species}</h3>
-            <h3>Gender:{character.gender}</h3>
+            <h2>State: {character.status}</h2>
+            <h2>Species:{character.species}</h2>
+            <h2>Gender:{character.gender}</h2>
+            <h2>Origin:{character.origin.name}</h2>
+            <br/>
+            <button className="goback" onClick={() => navigate("/cards")}>Go Back!</button>
         </div>
     )
 }
